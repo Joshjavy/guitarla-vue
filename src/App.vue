@@ -1,10 +1,15 @@
 <script setup>
-    import { ref, reactive} from 'vue'
+    import { ref, reactive, onMounted } from 'vue'
     import { db } from './data/guitarra'
     const state = reactive({
-        guitarras : db
+        guitarras : []
     });
 
+    const guitarras = ref([]);
+    onMounted(()=>{
+       guitarras.value = db;
+       state.guitarras = db;
+    });
 </script>
 
 <template>
