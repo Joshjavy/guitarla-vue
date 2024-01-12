@@ -11,8 +11,10 @@
     const guitarras = ref([]);
     onMounted(()=>{
        guitarras.value = db;
-       state.guitarras = db;
     });
+    const incrementar =() =>{
+        alert('');
+    }
 </script>
 
 <template>
@@ -109,6 +111,7 @@
             <Guitarra
                 v-for="guitarra in guitarras"
                 :guitarra="guitarra"
+                
             />
 
             
