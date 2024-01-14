@@ -4,16 +4,20 @@
     import Guitarra from './components/Guitarra.vue';
 
 
-    const state = reactive({
-        guitarras : []
-    });
+    // const state = reactive({
+    //     guitarras : []
+    // });
 
     const guitarras = ref([]);
+    const carrito = ref([]);
+    
+
     onMounted(()=>{
        guitarras.value = db;
     });
-    const agregarCarrito =() =>{
-        alert('');
+    const agregarCarrito =(guitarra) =>{
+        guitarra.Cantidad=1;
+        carrito.value.push(guitarra);
     }
 </script>
 
