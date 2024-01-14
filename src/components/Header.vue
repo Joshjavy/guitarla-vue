@@ -1,5 +1,10 @@
 <script setup>
-
+ const props = defineProps({
+        carrito:{
+            type: Array,
+            required:true,
+        }
+    });
 </script>
 <template>
     <header class="py-5 header">
@@ -10,15 +15,16 @@
                         <img class="img-fluid" src="/img/logo.svg" alt="imagen logo">
                     </a>
                 </div>
-                <nav class="col-md-6 a mt-5 d-flex align-items-start justify-content-end">
+                <nav  class="col-md-6 a mt-5 d-flex align-items-start justify-content-end">
                     <div 
                         class="carrito"
                     >
                         <img class="img-fluid" src="/img/carrito.png" alt="imagen carrito" />
 
                         <div id="carrito" class="bg-white p-3">
-                            <p class="text-center">El carrito esta vacio</p>
-                            <table class="w-100 table">
+                            <p v-if="carrito.length===0" class="text-center">El carrito esta vacio</p>
+                            <div v-else>
+                            <table  class="w-100 table">
                                 <thead>
                                     <tr>
                                         <th>Imagen</th>
@@ -29,13 +35,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+
+                                    <tr v-for="art in carrito">
                                         <td>
                                             <img class="img-fluid" src="/img/guitarra_02.jpg" alt="imagen guitarra">
                                         </td>
                                         <td>SRV</td>
                                         <td class="fw-bold">
-                                                $299
+                                                $ {{ art.precio}}
                                         </td>
                                         <td class="flex align-items-start gap-4">
                                             <button
@@ -61,11 +68,14 @@
                                             </button>
                                         </td>
                                     </tr>
+
+
                                 </tbody>
                             </table>
 
                             <p class="text-end">Total pagar: <span class="fw-bold">$899</span></p>
                             <button class="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
+                        </div>
                         </div>
                     </div>
                 </nav>
