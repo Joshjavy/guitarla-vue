@@ -16,7 +16,7 @@
        guitarras.value = db;
     });
     const agregarCarrito =(guitarra) =>{
-        guitarra.Cantidad=1;
+        guitarra.cantidad=1;
         carrito.value.push(guitarra);
     }
 </script>

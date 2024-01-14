@@ -21,7 +21,6 @@
             </div>
             <div class="col-8">
                 <h3 class="text-black fs-4 fw-bold text-uppercase"> {{ guitarra.nombre }}</h3>
-                {{ numero }}
                 <p>{{ guitarra.descripcion }}</p>
                 <p class="fw-black text-primary fs-3">$ {{ guitarra.precio }}</p>
                 <button 
