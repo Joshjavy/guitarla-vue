@@ -2,6 +2,7 @@
     import { ref } from 'vue';
 
     const numero = ref (0);  
+
     const props = defineProps({
         guitarra:{
             type:Object,
@@ -9,7 +10,7 @@
         }
     });
 
-    
+    defineEmits(['agregar-carrito'])
 
 </script>
 
@@ -26,7 +27,7 @@
                 <button 
                     type="button"
                     class="btn btn-dark w-100 "
-                    @click="incrementar"
+                    @click="$emit('agregar-carrito')"
                 >Agregar al Carrito</button>
             </div>
         </div><!-- FIN GUITARRA -->
