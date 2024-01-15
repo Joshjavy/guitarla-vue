@@ -11,11 +11,12 @@ import { computed} from 'vue'
         }
     });
 
-    defineEmits(['decrementar-cantidad','incrementar-cantidad','agregar-carrito']);
+    defineEmits(['decrementar-cantidad','incrementar-cantidad','agregar-carrito','eliminar-producto']);
     const totalPagar = computed(()=>{
         return props.carrito.reduce((total, producto)=> total + (producto.cantidad * producto.precio),0)
     });
 
+    
 </script>
 <template>
     <header class="py-5 header">
@@ -81,6 +82,7 @@ import { computed} from 'vue'
                                             <button
                                                 class="btn btn-danger"
                                                 type="button"
+                                                @click="$emit('eliminar-producto',producto.id)"
                                             >
                                                 X
                                             </button>

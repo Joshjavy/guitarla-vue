@@ -40,6 +40,10 @@
         if(carrito.value[index].cantidad>=5) return
         carrito.value[index].cantidad++;
     }
+    const elimintarProducto=(id)=>{
+        carrito.value = carrito.value.filter(producto => producto.id !== id);
+
+    }
 </script>
 
 <template>
@@ -49,6 +53,7 @@
         @decrementar-cantidad="decrementarCantidad"
         @incrementar-cantidad="incrementarCantidad"
         @agregar-carrito="agregarCarrito"
+        @eliminar-producto="elimintarProducto"
     />
     <main class="container-xl mt-5">
         <h2 class="text-center">Nuestra Colección</h2>
@@ -59,6 +64,7 @@
                 v-for="guitarra in guitarras"
                 :guitarra="guitarra"
                 @agregar-carrito="agregarCarrito"
+                
             />
 
             
