@@ -11,7 +11,7 @@ import { computed} from 'vue'
         }
     });
 
-    defineEmits(['decrementar-cantidad','incrementar-cantidad','agregar-carrito','eliminar-producto']);
+    defineEmits(['decrementar-cantidad','incrementar-cantidad','agregar-carrito','eliminar-producto','vaciarCarrito']);
     const totalPagar = computed(()=>{
         return props.carrito.reduce((total, producto)=> total + (producto.cantidad * producto.precio),0)
     });
@@ -94,7 +94,9 @@ import { computed} from 'vue'
                             </table>
 
                             <p class="text-end">Total pagar: <span class="fw-bold">${{ totalPagar }}</span></p>
-                            <button class="btn btn-dark w-100 mt-3 p-2">Vaciar Carrito</button>
+                            <button class="btn btn-dark w-100 mt-3 p-2"
+                                @click="$emit('vaciarCarrito')"
+                            >Vaciar Carrito</button>
                         </div>
                         </div>
                     </div>
