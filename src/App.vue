@@ -1,5 +1,5 @@
 <script setup>
-    import { ref, reactive, onMounted } from 'vue'
+    import { ref, reactive, onMounted, watch } from 'vue'
     import { db } from './data/guitarra'
     import Guitarra from './components/Guitarra.vue';
     import Header from './components/Header.vue'
@@ -9,6 +9,12 @@
     const carrito = ref([]);
     const guitarra = ref({});
 
+    watch(
+        carrito,()=>{
+            guardarLocalStorage();
+        },{
+            deep:true
+        });
     onMounted(()=>{
        guitarras.value = db;
        guitarra.value = db[3];
@@ -18,6 +24,7 @@
        }
 
     });
+
 
     const guardarLocalStorage=()=>{
         localStorage.setItem('guitarrala',JSON.stringify(carrito.value));
@@ -33,14 +40,14 @@
             carrito.value.push(guitarra);
         }
 
-        guardarLocalStorage();
+        
     }
 
     const decrementarCantidad =(id)=>{
         const index = carrito.value.findIndex(producto => producto.id === id)
         if(carrito.value[index].cantidad<=1) return
             carrito.value[index].cantidad--;
-        guardarLocalStorage();
+        
 
             
     }
@@ -48,16 +55,16 @@
         const index = carrito.value.findIndex(producto => producto.id === id)
         if(carrito.value[index].cantidad>=5) return
             carrito.value[index].cantidad++;
-        guardarLocalStorage();
+        
     }
     const elimintarProducto=(id)=>{
         carrito.value = carrito.value.filter(producto => producto.id !== id);
-        guardarLocalStorage();
+        
 
     }
     const vaciarCarrito=()=>{
         carrito.value=[];
-        guardarLocalStorage();
+        
     }
 </script>
 
