@@ -41,6 +41,7 @@
         carrito.value[index].cantidad++;
     }
 </script>
+
 <template>
     <Header 
         :carrito="carrito"
